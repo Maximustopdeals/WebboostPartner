@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Outfit, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -26,7 +27,7 @@ const ibmMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL("https://webboostpartner.nl"),
   
   title: {
@@ -59,7 +60,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
