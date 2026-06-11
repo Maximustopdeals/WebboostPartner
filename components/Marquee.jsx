@@ -3,13 +3,13 @@
 import { useEffect, useRef } from "react";
 
 export default function Marquee() {
-  const trackRef = useRef(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     
-    let animationId;
+    let animationId: number;
     let position = 0;
     const speed = 0.5; // pixels per frame
 
@@ -31,7 +31,7 @@ export default function Marquee() {
     };
   }, []);
 
-  const items = [
+  const items: string[] = [
     "SEO ROTTERDAM",
     "NEXT.JS SPEED",
     "CONVERSIE",
@@ -41,7 +41,7 @@ export default function Marquee() {
   ];
 
   // Triple the items to ensure seamless looping
-  const content = [...items, ...items, ...items];
+  const content: string[] = [...items, ...items, ...items];
 
   return (
     <section className="bg-black border-y-2 border-black overflow-hidden py-6 sm:py-8" data-testid="marquee-banner">
@@ -49,7 +49,7 @@ export default function Marquee() {
         ref={trackRef}
         className="whitespace-nowrap flex items-center gap-12 will-change-transform"
       >
-        {content.map((t, i) => (
+        {content.map((t: string, i: number) => (
           <span
             key={i}
             className="font-heading font-extrabold uppercase text-5xl sm:text-7xl text-transparent shrink-0"
