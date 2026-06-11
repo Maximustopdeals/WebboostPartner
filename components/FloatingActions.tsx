@@ -3,21 +3,21 @@
 import { useState, useEffect } from "react";
 import { ArrowUp, X } from "lucide-react";
 
-const PHONE = "31642628242";
-const PREFILL = "WebBoostPartner";
+const PHONE: string = "31642628242";
+const PREFILL: string = "WebBoostPartner";
 
 export default function FloatingActions() {
-  const [showTop, setShowTop] = useState(false);
-  const [waOpen, setWaOpen] = useState(false);
+  const [showTop, setShowTop] = useState<boolean>(false);
+  const [waOpen, setWaOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 600);
+    const onScroll = (): void => setShowTop(window.scrollY > 600);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const waLink = `https://wa.me/${PHONE}?text=${encodeURIComponent(PREFILL)}`;
+  const waLink: string = `https://wa.me/${PHONE}?text=${encodeURIComponent(PREFILL)}`;
 
   return (
     <>
@@ -42,8 +42,14 @@ export default function FloatingActions() {
           opacity: 1,
           transition: "all 0.3s ease",
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.backgroundColor = "#FF4500"; }}
-        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; if (!showTop) e.currentTarget.style.backgroundColor = "#1a1a1a"; }}
+        onMouseEnter={(e) => { 
+          (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-4px)"; 
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#FF4500"; 
+        }}
+        onMouseLeave={(e) => { 
+          (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"; 
+          if (!showTop) (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#1a1a1a"; 
+        }}
       >
         <ArrowUp size={22} strokeWidth={3} />
       </button>
@@ -137,8 +143,12 @@ export default function FloatingActions() {
             cursor: "pointer",
             transition: "transform 0.2s",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
+          onMouseEnter={(e) => { 
+            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-4px)"; 
+          }}
+          onMouseLeave={(e) => { 
+            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"; 
+          }}
         >
           {waOpen ? <X size={26} strokeWidth={3} /> : (
             <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
