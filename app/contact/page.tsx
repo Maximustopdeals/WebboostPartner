@@ -1,12 +1,35 @@
 import ContactForm from "@/components/ContactForm";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, LucideIcon } from "lucide-react";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Contact | Plan een vrijblijvend gesprek over je website",
   description:
     "Neem vrijblijvend contact op met WebBoost Partner in Rotterdam. Een nieuwe website laten maken, WordPress migreren, of advies? Stuur een berichtje.",
   alternates: { canonical: "https://webboostpartner.nl/contact" },
 };
+
+interface ContactCardProps {
+  icon: LucideIcon;
+  label: string;
+  children: React.ReactNode;
+}
+
+function ContactCard({ icon: Icon, label, children }: ContactCardProps) {
+  return (
+    <div className="border-2 border-black bg-white p-5 hover:shadow-brutal-sm hover:-translate-y-1 transition-all">
+      <div className="flex items-start gap-4">
+        <div className="w-11 h-11 grid place-items-center bg-[#FF4500] text-white border-2 border-black shrink-0">
+          <Icon size={20} strokeWidth={2.5} />
+        </div>
+        <div>
+          <p className="font-mono text-xs uppercase tracking-widest text-[#525252] mb-1">{label}</p>
+          <div>{children}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ContactPage() {
   return (
@@ -66,21 +89,5 @@ export default function ContactPage() {
         </div>
       </section>
     </>
-  );
-}
-
-function ContactCard({ icon: Icon, label, children }) {
-  return (
-    <div className="border-2 border-black bg-white p-5 hover:shadow-brutal-sm hover:-translate-y-1 transition-all">
-      <div className="flex items-start gap-4">
-        <div className="w-11 h-11 grid place-items-center bg-[#FF4500] text-white border-2 border-black shrink-0">
-          <Icon size={20} strokeWidth={2.5} />
-        </div>
-        <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-[#525252] mb-1">{label}</p>
-          <div>{children}</div>
-        </div>
-      </div>
-    </div>
   );
 }
