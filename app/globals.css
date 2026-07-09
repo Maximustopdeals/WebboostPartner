@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAFAFA;
+  color: #0A0A0A;
+  font-family: var(--font-ibm-plex), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #FF4500;
+  color: #FFFFFF;
+}
+
+/* Brutalist focus rings */
+*:focus-visible {
+  outline: 3px solid #FF4500;
+  outline-offset: 2px;
+}
+
+/* Prose styling for long-form SEO content */
+.prose-brutal h2 {
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+  margin-top: 4rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 3px solid #0A0A0A;
+  padding-bottom: 0.5rem;
+}
+
+.prose-brutal h3 {
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.prose-brutal h4 {
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-brutal p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  max-width: 70ch;
+}
+
+.prose-brutal ul {
+  margin: 1.25rem 0 1.5rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose-brutal ul li {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: 0.625rem;
+  padding-left: 1.75rem;
+  position: relative;
+  max-width: 68ch;
+}
+
+.prose-brutal ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.9rem;
+  height: 3px;
+  background: #FF4500;
+}
+
+.prose-brutal strong {
+  font-weight: 700;
+  background: linear-gradient(to top, #FFE5DA 40%, transparent 40%);
+  padding: 0 2px;
+}
+
+.prose-brutal a {
+  color: #FF4500;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.prose-brutal a:hover {
+  background: #0A0A0A;
+  color: #FAFAFA;
+}
+
+/* Marquee handled by JS requestAnimationFrame */
+/* WhatsApp widget animation */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.25s ease-out forwards;
+}
