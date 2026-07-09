@@ -45,6 +45,7 @@ interface ScoresType {
 }
 
 // Helper functions — Google API geeft scores als 0-1, we tonen 0-100
+// NIEUW:
 function getScore(cat?: LighthouseCategory): number {
   if (!cat || typeof cat.score !== "number") return 0;
   return Math.round(cat.score * 100);
